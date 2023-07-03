@@ -1,0 +1,21 @@
+{
+    "name": "com.parallaxlabs.visualaccesibilitytoolkit",
+    "displayName": "visualaccesibilitytoolkit",
+    "version": "1.0.1",
+    "description": "A package consisting of shaders, scripts and inspector modifications to aid in development.",
+    "license": "MIT",
+    "author": {
+        "name": "Satyam Kashyap",
+        "email": "satyamsudo@gmail.com",
+        "url": "https://sudotman.github.io/"
+    },
+    "documentationUrl": "https://github.com/sudotman/BetterUnity/blob/main/README.md#contents--documentation",
+    "keywords": [
+        "scripts",
+        "inspector",
+        "modifications",
+        "shaders"
+    ],
+    "category": "Scripts"
+ 
+}
