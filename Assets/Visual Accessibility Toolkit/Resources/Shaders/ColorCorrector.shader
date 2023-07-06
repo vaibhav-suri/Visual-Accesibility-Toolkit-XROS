@@ -3,7 +3,7 @@ Shader "Custom/ColorCorrector"
     Properties
     {
         _MainTex("Texture", 2D) = "white" {}
-            _Type("Colorblind Mode", Range(0, 3)) = 0
+        _Type("Colorblind Mode", Range(0, 3)) = 0
         _Intensity("Intensity", Range(0, 1)) = 0.5
     }
 

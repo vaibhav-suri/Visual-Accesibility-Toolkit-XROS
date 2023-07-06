@@ -38,23 +38,23 @@ public class ColorblindnessWindow : EditorWindow
             _colorblindnessMode = ColorblindnessMode.Protanopia;
             ApplyColorblindnessShader();
         }
-        
+
         if (GUILayout.Button("Deuteranopia"))
         {
             _colorblindnessMode = ColorblindnessMode.Deuteranopia;
             ApplyColorblindnessShader();
 
         }
-        
+
         if (GUILayout.Button("Tritanopia"))
         {
             _colorblindnessMode = ColorblindnessMode.Tritanopia;
             ApplyColorblindnessShader();
 
         }
-        
-       // GUILayout.Label("Intensity");
-    //    _intensity = GUILayout.HorizontalSlider(_intensity, 0f, 1f);
+
+        // GUILayout.Label("Intensity");
+        //    _intensity = GUILayout.HorizontalSlider(_intensity, 0f, 1f);
 
 
         // Apply the colorblindness shader to the main camera
@@ -70,24 +70,30 @@ public class ColorblindnessWindow : EditorWindow
                 MonoBehaviour.print("Normal");
                 Camera.main.GetComponent<CameraSimulationEffect>().simulationMaterial.SetInt("_Type", 0);
                 Camera.main.GetComponent<CameraSimulationEffect>().colorBlindMode = false;
-                 break;
+                Shader.SetGlobalInteger("_Type", 0);
+                break;
             case ColorblindnessMode.Protanopia:
-                 Camera.main.GetComponent<CameraSimulationEffect>().simulationMaterial.SetInt("_Type", 1);
-                 Camera.main.GetComponent<CameraSimulationEffect>().colorBlindMode = true;
+                Camera.main.GetComponent<CameraSimulationEffect>().simulationMaterial.SetInt("_Type", 1);
+                Camera.main.GetComponent<CameraSimulationEffect>().colorBlindMode = true;
+                Shader.SetGlobalInteger("_Type", 1);
                 MonoBehaviour.print("Protonopia");
                 break;
             case ColorblindnessMode.Deuteranopia:
-                 Camera.main.GetComponent<CameraSimulationEffect>().simulationMaterial.SetInt("_Type", 2);
-                 Camera.main.GetComponent<CameraSimulationEffect>().colorBlindMode = true;
+                Camera.main.GetComponent<CameraSimulationEffect>().simulationMaterial.SetInt("_Type", 2);
+                Camera.main.GetComponent<CameraSimulationEffect>().colorBlindMode = true;
+                Shader.SetGlobalInteger("_Type", 2);
                 MonoBehaviour.print("Deuteranopia");
-                break; 
+                break;
             case ColorblindnessMode.Tritanopia:
-                 Camera.main.GetComponent<CameraSimulationEffect>().simulationMaterial.SetInt("_Type", 3);
-                 Camera.main.GetComponent<CameraSimulationEffect>().colorBlindMode = true;
+                Camera.main.GetComponent<CameraSimulationEffect>().simulationMaterial.SetInt("_Type", 3);
+                Camera.main.GetComponent<CameraSimulationEffect>().colorBlindMode = true;
+                Shader.SetGlobalInteger("_Type", 3);
                 MonoBehaviour.print("Tritanopia");
                 break;
             default:
                 break;
+
+                // Shader.SetGlobalInteger("_CorrectionType", (int)colorCorrectionType);
         }
     }
 }

@@ -75,9 +75,10 @@
                     // matrix multiplication with color-shifting matrix - index specified by '_Type' variable
                     float3 x = mul(color.rgb, color_matrices[_Type]);
                     // apply intensity to the transformed color
-                    x *= _Intensity;
+                    // x *= _Intensity;
                     // cast it to proper type before returning
                     return half4(x, 1.0f);
+                    // return _Color;
                 }
 
                 ENDCG

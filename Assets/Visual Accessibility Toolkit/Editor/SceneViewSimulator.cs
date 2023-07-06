@@ -3,19 +3,26 @@ using UnityEditor;
 
 public class SceneViewSimulator : MonoBehaviour
 {
-    const string ReplacementShaderName = "Custom/Colorblind";
+    const string ReplacementShaderName = "Resources/Shaders/Colorblind";
     static Shader s_shader;
+    
+    protected static Shader ReplacementShader {
+        get { return s_shader = s_shader ?? Shader.Find(ReplacementShaderName); }
+    }
 
     [MenuItem("VisualToolkit/Custom Render Mode on SceneView")]
     static void SceneViewCustomSceneMode()
     {
-        s_shader = Shader.Find(ReplacementShaderName);
+        // s_shader = Shader.Find(ReplacementShaderName);
+        s_shader = Resources.Load<Shader>("Shaders/Colorblind");
+        Debug.Log(ReplacementShader);
         if (s_shader != null)
         {
             foreach (SceneView sceneView in SceneView.sceneViews)
             {
-                sceneView.SetSceneViewShaderReplace(s_shader, null);
+                sceneView.SetSceneViewShaderReplace(ReplacementShader, null);
             }
+            Debug.Log("Shader attached");
         }
         SceneView.RepaintAll();
     }
