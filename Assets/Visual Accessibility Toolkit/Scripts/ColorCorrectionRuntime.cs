@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
+/// <summary>
+/// A script to apply the Color Correction Shader on Main Camera
+/// </summary>
 [ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
 public class ColorCorrectionRuntime : MonoBehaviour
@@ -27,11 +30,15 @@ public class ColorCorrectionRuntime : MonoBehaviour
         else
             desc = new RenderTextureDescriptor(Screen.width, Screen.height); // Not XR
         correctionMaterial.SetFloat("_Intensity", intensity);
-        correctionMaterial.SetInt("_Type", type);
+        correctionMaterial.SetInt("_CorrectionType", type);
         RenderTexture rt = RenderTexture.GetTemporary(desc);
         Graphics.Blit(source, rt, correctionMaterial, 0);
         Graphics.Blit(rt, destination, correctionMaterial, 1);
         RenderTexture.ReleaseTemporary(rt);
     }
 
+    private void Update()
+    {
+       
+    }
 }

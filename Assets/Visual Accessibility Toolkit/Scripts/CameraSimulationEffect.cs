@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// A script required to be attached on the Main Camera in order to simulate effect
+/// </summary>
  [ExecuteInEditMode]
 [RequireComponent(typeof(Camera))]
 public class CameraSimulationEffect : MonoBehaviour
@@ -12,6 +16,8 @@ public class CameraSimulationEffect : MonoBehaviour
 
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
+        #if UNITY_EDITOR
+
         if (simulationMaterial == null)
         {
             simulationMaterial = Resources.Load<Material>("SimulationMaterial");
@@ -25,6 +31,7 @@ public class CameraSimulationEffect : MonoBehaviour
         }
         Debug.Log("Render Image second call");
         Graphics.Blit(src, dest, simulationMaterial);
+        #endif
     }
     
 }

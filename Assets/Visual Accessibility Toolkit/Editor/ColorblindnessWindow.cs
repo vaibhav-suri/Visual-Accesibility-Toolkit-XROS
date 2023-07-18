@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEditor;
 
+/// <summary>
+/// //A script to set colorblindness settings from unity editor
+/// </summary>
 public class ColorblindnessWindow : EditorWindow
 {
     public enum ColorblindnessMode

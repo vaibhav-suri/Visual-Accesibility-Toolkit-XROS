@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEditor;
 
+/// <summary>
+/// A script used to simulate colorblindness shader in Scene View
+/// </summary>
 public class SceneViewSimulator : MonoBehaviour
 {
     const string ReplacementShaderName = "Resources/Shaders/Colorblind";
