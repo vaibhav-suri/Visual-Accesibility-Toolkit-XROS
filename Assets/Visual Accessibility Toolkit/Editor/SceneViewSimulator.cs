@@ -30,7 +30,7 @@ public class SceneViewSimulator : MonoBehaviour
     }
 
     [MenuItem("Visual Accessibility Toolkit/Clear Scene View")]
-    static void SceneViewClearSceneView()
+    public static void SceneViewClearSceneView()
     {
         foreach (SceneView sceneView in SceneView.sceneViews)
         {

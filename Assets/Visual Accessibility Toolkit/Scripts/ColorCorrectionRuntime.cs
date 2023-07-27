@@ -16,7 +16,6 @@ public class ColorCorrectionRuntime : MonoBehaviour
     public float intensity = 1f;
     static bool isCorrectionEnabled = true;
 
-
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         if (isCorrectionEnabled)

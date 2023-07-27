@@ -72,6 +72,16 @@ public class ColorblindnessSimulation : MonoBehaviour
         // ColorCorrectionRuntime.EnableCorrection();
     }
 
+#if UNITY_EDITOR
+    private void OnDestroy()
+    {
+        foreach (SceneView sceneView in SceneView.sceneViews)
+        {
+            sceneView.SetSceneViewShaderReplace(null, null);
+        }
+        SceneView.RepaintAll();
+    }
+#endif
 }
 
 
