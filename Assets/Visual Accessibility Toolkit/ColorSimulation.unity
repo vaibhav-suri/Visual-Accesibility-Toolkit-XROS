@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorBlindMode: 0
-  material: {fileID: 2100000, guid: 8a14939b086223648b69bc9303eb848a, type: 2}
+  simulationMaterial: {fileID: 2100000, guid: 8a14939b086223648b69bc9303eb848a, type: 2}
 --- !u!1 &1632232979
 GameObject:
   m_ObjectHideFlags: 0

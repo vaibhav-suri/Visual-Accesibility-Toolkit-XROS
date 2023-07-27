@@ -13,24 +13,23 @@ public class SceneViewSimulator : MonoBehaviour
         get { return s_shader = s_shader ?? Shader.Find(ReplacementShaderName); }
     }
 
-    [MenuItem("VisualToolkit/Custom Render Mode on SceneView")]
+    [MenuItem("Visual Accessibility Toolkit/Simulate Colorblindness in Scene View")]
     static void SceneViewCustomSceneMode()
     {
         // s_shader = Shader.Find(ReplacementShaderName);
         s_shader = Resources.Load<Shader>("Shaders/Colorblind");
-        Debug.Log(ReplacementShader);
         if (s_shader != null)
         {
             foreach (SceneView sceneView in SceneView.sceneViews)
             {
                 sceneView.SetSceneViewShaderReplace(ReplacementShader, null);
             }
-            Debug.Log("Shader attached");
         }
         SceneView.RepaintAll();
+        Debug.Log("Color Simulation is enabled on Scene View");
     }
 
-    [MenuItem("VisualToolkit/Clear SceneView")]
+    [MenuItem("Visual Accessibility Toolkit/Clear Scene View")]
     static void SceneViewClearSceneView()
     {
         foreach (SceneView sceneView in SceneView.sceneViews)
@@ -38,5 +37,6 @@ public class SceneViewSimulator : MonoBehaviour
             sceneView.SetSceneViewShaderReplace(null, null);
         }
         SceneView.RepaintAll();
+        Debug.Log("Color Simulation is disabled on Scene View");
     }
 }

@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 951995234}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  intensity: 1
+  intensity: 0.5
 --- !u!81 &951995235
 AudioListener:
   m_ObjectHideFlags: 0

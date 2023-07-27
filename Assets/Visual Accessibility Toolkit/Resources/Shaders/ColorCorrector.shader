@@ -88,43 +88,43 @@ Shader "Custom/ColorCorrector"
         
         fixed4 fragPass2(v2f i) : SV_Target
         {
-             fixed4 color = UNITY_SAMPLE_SCREENSPACE_TEXTURE(_MainTex, i.uv);
-        float3x3 interpolatedMatrix;
-        float3x3 normalMatrix = color_matrices[0];
-        float3x3 colorBlindMatrix = color_matrices[_CorrectionType];
-        // Interpolate each element of the matrix based on _Intensity
-        interpolatedMatrix[0][0] = lerp(normalMatrix[0][0], (colorBlindMatrix)[0][0], _Intensity);
-        interpolatedMatrix[0][1] = lerp(normalMatrix[0][1], (colorBlindMatrix)[0][1], _Intensity);
-        interpolatedMatrix[0][2] = lerp(normalMatrix[0][2], (colorBlindMatrix)[0][2], _Intensity);
-        interpolatedMatrix[1][0] = lerp(normalMatrix[1][0], (colorBlindMatrix)[1][0], _Intensity);
-        interpolatedMatrix[1][1] = lerp(normalMatrix[1][1], (colorBlindMatrix)[1][1], _Intensity);
-        interpolatedMatrix[1][2] = lerp(normalMatrix[1][2], (colorBlindMatrix)[1][2], _Intensity);
-        interpolatedMatrix[2][0] = lerp(normalMatrix[2][0], (colorBlindMatrix)[2][0], _Intensity);
-        interpolatedMatrix[2][1] = lerp(normalMatrix[2][1], (colorBlindMatrix)[2][1], _Intensity);
-        interpolatedMatrix[2][2] = lerp(normalMatrix[2][2], (colorBlindMatrix)[2][2], _Intensity);
-        float3 L = (17.8824f * color.r) + (43.5161f * color.g) + (4.11935f * color.b);
-        float3 M = (3.45565f * color.r) + (27.1554f * color.g) + (3.86714f * color.b);
-        float3 S = (0.0299566f * color.r) + (0.184309f * color.g) + (1.46709f * color.b);
+            fixed4 color = UNITY_SAMPLE_SCREENSPACE_TEXTURE(_MainTex, i.uv);
+            float3x3 interpolatedMatrix;
+            float3x3 normalMatrix = color_matrices[0];
+            float3x3 colorBlindMatrix = color_matrices[_CorrectionType];
+            // Interpolate each element of the matrix based on _Intensity
+            interpolatedMatrix[0][0] = lerp(normalMatrix[0][0], (colorBlindMatrix)[0][0], _Intensity);
+            interpolatedMatrix[0][1] = lerp(normalMatrix[0][1], (colorBlindMatrix)[0][1], _Intensity);
+            interpolatedMatrix[0][2] = lerp(normalMatrix[0][2], (colorBlindMatrix)[0][2], _Intensity);
+            interpolatedMatrix[1][0] = lerp(normalMatrix[1][0], (colorBlindMatrix)[1][0], _Intensity);
+            interpolatedMatrix[1][1] = lerp(normalMatrix[1][1], (colorBlindMatrix)[1][1], _Intensity);
+            interpolatedMatrix[1][2] = lerp(normalMatrix[1][2], (colorBlindMatrix)[1][2], _Intensity);
+            interpolatedMatrix[2][0] = lerp(normalMatrix[2][0], (colorBlindMatrix)[2][0], _Intensity);
+            interpolatedMatrix[2][1] = lerp(normalMatrix[2][1], (colorBlindMatrix)[2][1], _Intensity);
+            interpolatedMatrix[2][2] = lerp(normalMatrix[2][2], (colorBlindMatrix)[2][2], _Intensity);
+            float3 L = (17.8824f * color.r) + (43.5161f * color.g) + (4.11935f * color.b);
+            float3 M = (3.45565f * color.r) + (27.1554f * color.g) + (3.86714f * color.b);
+            float3 S = (0.0299566f * color.r) + (0.184309f * color.g) + (1.46709f * color.b);
        
 		    float l = interpolatedMatrix[0][0] * L + interpolatedMatrix[0][1] * M + interpolatedMatrix[0][2] * S;
 		    float m = interpolatedMatrix[1][0] * L + interpolatedMatrix[1][1] * M + interpolatedMatrix[1][2] * S;
 		    float s = interpolatedMatrix[2][0] * L + interpolatedMatrix[2][1] * M + interpolatedMatrix[2][2] * S;
 	     
-        float4 error;
-        error.r = (0.0809444479f * l) + (-0.130504409f * m) + (0.116721066f * s);
-        error.g = (-0.0102485335f * l) + (0.0540193266f * m) + (-0.113614708f * s);
-        error.b = (-0.000365296938f * l) + (-0.00412161469f * m) + (0.693511405f * s);
-        error.a = 1;
+            float4 error;
+            error.r = (0.0809444479f * l) + (-0.130504409f * m) + (0.116721066f * s);
+            error.g = (-0.0102485335f * l) + (0.0540193266f * m) + (-0.113614708f * s);
+            error.b = (-0.000365296938f * l) + (-0.00412161469f * m) + (0.693511405f * s);
+            error.a = 1;
 
-        return error.rgba;
+            return error.rgba;
         //    float3 x = mul(color.rgb, (interpolatedMatrix));
          //   return fixed4(x, 1.0);
             
         }
 
-            fixed4 frag(v2f i) : SV_Target
+        fixed4 frag(v2f i) : SV_Target
         {
-             fixed4 color = UNITY_SAMPLE_SCREENSPACE_TEXTURE(_MainTex, i.uv);
+            fixed4 color = UNITY_SAMPLE_SCREENSPACE_TEXTURE(_MainTex, i.uv);
             float3 x = mul(color.rgb, color_matrices[0]);
             return fixed4(x, 1.0);
         }
