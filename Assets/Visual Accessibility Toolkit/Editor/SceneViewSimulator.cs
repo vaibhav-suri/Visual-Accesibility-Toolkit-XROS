@@ -13,23 +13,33 @@ public class SceneViewSimulator : MonoBehaviour
         get { return s_shader = s_shader ?? Shader.Find(ReplacementShaderName); }
     }
 
-    [MenuItem("Visual Accessibility Toolkit/Simulate Colorblindness in Scene View")]
+    [MenuItem("Visual Accessibility Toolkit/Scene View/Simulate Colorblindness in Scene View")]
     static void SceneViewCustomSceneMode()
     {
-        // s_shader = Shader.Find(ReplacementShaderName);
-        s_shader = Resources.Load<Shader>("Shaders/Colorblind");
-        if (s_shader != null)
+        if (Camera.main != null)
         {
-            foreach (SceneView sceneView in SceneView.sceneViews)
+            if (Camera.main.GetComponent<ColorblindnessSimulation>() != null)
             {
-                sceneView.SetSceneViewShaderReplace(ReplacementShader, null);
+                // s_shader = Shader.Find(ReplacementShaderName);
+                s_shader = Resources.Load<Shader>("Shaders/Colorblind");
+                if (s_shader != null)
+                {
+                    foreach (SceneView sceneView in SceneView.sceneViews)
+                    {
+                        sceneView.SetSceneViewShaderReplace(ReplacementShader, null);
+                    }
+                }
+                SceneView.RepaintAll();
+                Debug.Log("Color Simulation is enabled on Scene View");
             }
+            else
+                print("\'ColorblindnessSimulation\' script is not found on MainCamera.");
         }
-        SceneView.RepaintAll();
-        Debug.Log("Color Simulation is enabled on Scene View");
+        else
+            MonoBehaviour.print("No Camera with tag \'MainCamera\' is found in this scene.");
     }
 
-    [MenuItem("Visual Accessibility Toolkit/Clear Scene View")]
+    [MenuItem("Visual Accessibility Toolkit/Scene View/Clear Scene View")]
     public static void SceneViewClearSceneView()
     {
         foreach (SceneView sceneView in SceneView.sceneViews)

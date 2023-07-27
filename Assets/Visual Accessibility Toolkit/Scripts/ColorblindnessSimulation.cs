@@ -58,14 +58,14 @@ public class ColorblindnessSimulation : MonoBehaviour
         }
     }
 
-    [MenuItem("Visual Accessibility Toolkit/Enable Colorblindness Simulation in Game View")]
+    [MenuItem("Visual Accessibility Toolkit/Game View/Enable Colorblindness Simulation in Game View")]
     static void EnableSimulation()
     {
         isSimulationActive = true;
         // ColorCorrectionRuntime.DisableCorrection();
     }
 
-    [MenuItem("Visual Accessibility Toolkit/Disable Colorblindness Simulation in Game View")]
+    [MenuItem("Visual Accessibility Toolkit/Game View/Disable Colorblindness Simulation in Game View")]
     static void DisableSimulation()
     {
         isSimulationActive = false;

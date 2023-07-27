@@ -59,14 +59,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _CorrectionType: 0
+    - _CorrectionType: 3
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Intensity: 0.5
+    - _Intensity: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

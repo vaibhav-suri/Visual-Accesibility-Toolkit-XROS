@@ -8,7 +8,7 @@ public class ColorblindnessWindow : EditorWindow
 {
     private ColorblindnessMode _colorblindnessMode;
 
-    [MenuItem("Visual Accessibility Toolkit/Colorblindness Simulation Window")]
+    [MenuItem("Visual Accessibility Toolkit/Game View/Colorblindness Simulation Effects")]
     public static void ShowWindow()
     {
         GetWindow<ColorblindnessWindow>("Colorblindness Simulator");
